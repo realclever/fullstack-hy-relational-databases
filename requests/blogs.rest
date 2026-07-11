@@ -1,7 +1,19 @@
 ### Get all blogs
 GET http://localhost:3001/api/blogs
 
-### Add a new blog
+### Create a blog as logged user
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhdEBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE3ODM4MDYxOTd9.rWKz4diKW8WE2TLLE-zPsVVvcGifLzPQ6O99Y6zfg8Y
+
+{
+  "author": "Cat Author",
+  "url": "https://example.com/cat-blog",
+  "title": "Relational databases for cats",
+  "likes": 7
+}
+
+### Create a blog without a token
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
