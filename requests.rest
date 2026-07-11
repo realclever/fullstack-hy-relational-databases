@@ -1,0 +1,16 @@
+### Get all blogs
+GET http://localhost:3001/api/blogs
+
+### Add a new blog
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "author": "Robert C. Martin",
+  "url": "https://blog.cleancoder.com/",
+  "title": "Clean Code",
+  "likes": 10
+}
+
+### Delete a blog
+DELETE http://localhost:3001/api/blogs/3
