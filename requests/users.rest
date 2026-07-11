@@ -1,0 +1,20 @@
+### Get all users
+GET http://localhost:3001/api/users
+
+### Create a user
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "cat",
+  "name": "Senor Cat",
+  "password": "secretcat"
+}
+
+### Update a user's name
+PUT http://localhost:3001/api/users/cat
+Content-Type: application/json
+
+{
+  "name": "Professor Cat"
+}
