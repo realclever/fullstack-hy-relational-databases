@@ -23,3 +23,19 @@ Content-Type: application/json
 ### Delete a blog
 DELETE http://localhost:3001/api/blogs/3
 
+### Create invalid blog
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "author": "Test Author",
+  "url": "https://example.com"
+}
+
+### Update blog likes with invalid value
+PUT http://localhost:3001/api/blogs/1
+Content-Type: application/json
+
+{
+  "likes": "cat"
+}
