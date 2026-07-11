@@ -17,5 +17,10 @@
     "url": "https://github.com/realclever/fullstack-hy-relational-databases/issues"
   },
   "homepage": "https://github.com/realclever/fullstack-hy-relational-databases#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "pg": "^8.22.0",
+    "sequelize": "^6.37.8"
+  }
 }
