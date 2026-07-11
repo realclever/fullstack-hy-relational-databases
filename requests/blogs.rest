@@ -57,5 +57,14 @@ DELETE http://localhost:3001/api/blogs/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhdEBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE3ODM4MDYxOTd9.rWKz4diKW8WE2TLLE-zPsVVvcGifLzPQ6O99Y6zfg8Y
 
 ### Delete another user's blog
-DELETE http://localhost:3001/api/blogs/2
+DELETE http://localhost:3001/api/blogs/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvZ3NAZXhhbXBsZS5jb20iLCJpZCI6MiwiaWF0IjoxNzgzODA4MTMyfQ.E3CnpnBcV8B_AuREHHB181mhXaKolmjYylKLMUbaZDM
+
+### Search blogs by title
+GET http://localhost:3001/api/blogs?search=relational
+
+### Search blogs by title case insensitive
+GET http://localhost:3001/api/blogs?search=RELATIONAL
+
+### Search blogs with no matches
+GET http://localhost:3001/api/blogs?search=DOG
