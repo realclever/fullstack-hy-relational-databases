@@ -56,14 +56,24 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
-  const blog = await Blog.findByPk(req.params.id);
+router.delete("/:id", tokenExtractor, async (req, res, next) => {
+  try {
+    const blog = await Blog.findByPk(req.params.id);
 
-  if (blog) {
+    if (!blog) {
+      return res.status(404).end();
+    }
+
+    if (blog.userId !== req.decodedToken.id) {
+      return res.status(401).json({
+        error: "only the creator can delete this blog",
+      });
+    }
+
     await blog.destroy();
     res.status(204).end();
-  } else {
-    res.status(404).end();
+  } catch (error) {
+    next(error);
   }
 });
 

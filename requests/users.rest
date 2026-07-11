@@ -21,6 +21,16 @@ Content-Type: application/json
   "password": "secretcat"
 }
 
+### Create another valid user
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "dogs@example.com",
+  "name": "Professor Dog I",
+  "password": "secretcat"
+}
+
 ### Update a user's name
 PUT http://localhost:3001/api/users/cat@example.com
 Content-Type: application/json

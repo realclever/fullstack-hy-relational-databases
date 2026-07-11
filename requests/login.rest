@@ -1,4 +1,4 @@
-### Login
+### Login as cat
 POST http://localhost:3001/api/login
 Content-Type: application/json
 
@@ -6,3 +6,13 @@ Content-Type: application/json
   "username": "cat@example.com",
   "password": "secretcat"
 }
+
+### Login as dog
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "dogs@example.com",
+  "password": "secretcat"
+}
+
