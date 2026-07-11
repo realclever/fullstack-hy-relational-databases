@@ -1,7 +1,7 @@
 ### Get all users
 GET http://localhost:3001/api/users
 
-### Create a user
+### Create an invalid user
 POST http://localhost:3001/api/users
 Content-Type: application/json
 
@@ -11,10 +11,21 @@ Content-Type: application/json
   "password": "secretcat"
 }
 
-### Update a user's name
-PUT http://localhost:3001/api/users/cat
+### Create valid user
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "name": "Professor Cat"
+  "username": "cat@example.com",
+  "name": "Professor Cat II",
+  "password": "secretcat"
 }
+
+### Update a user's name
+PUT http://localhost:3001/api/users/cat@example.com
+Content-Type: application/json
+
+{
+  "name": "Professor Cat III"
+}
+
