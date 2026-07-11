@@ -68,3 +68,9 @@ GET http://localhost:3001/api/blogs?search=RELATIONAL
 
 ### Search blogs with no matches
 GET http://localhost:3001/api/blogs?search=DOG
+
+### Search blogs by author
+GET http://localhost:3001/api/blogs?search=cat
+
+### Search blogs by non-existent author
+GET http://localhost:3001/api/blogs?search=captainpaws
