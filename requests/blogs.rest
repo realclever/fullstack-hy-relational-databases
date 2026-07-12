@@ -13,6 +13,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhd
   "likes": 7
 }
 
+### Create a blog as logged user II
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvZ3NAZXhhbXBsZS5jb20iLCJpZCI6MiwiaWF0IjoxNzgzODA4MTMyfQ.E3CnpnBcV8B_AuREHHB181mhXaKolmjYylKLMUbaZDM
+
+{
+  "author": "Dog Author",
+  "url": "https://example.com/dog-blog",
+  "title": "Relational databases for dogs",
+  "likes": 11
+}
+
 ### Create a blog without a token
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
