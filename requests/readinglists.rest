@@ -1,0 +1,29 @@
+### Add blog to reading list
+POST http://localhost:3001/api/readinglists
+Content-Type: application/json
+
+{
+  "blogId": 2,
+  "userId": 1
+}
+
+### Get user with reading list
+GET http://localhost:3001/api/users/1
+
+### Invalid userId
+POST http://localhost:3001/api/readinglists
+Content-Type: application/json
+
+{
+  "blogId": 2,
+  "userId": 9999
+}
+
+### Invalid blogId
+POST http://localhost:3001/api/readinglists
+Content-Type: application/json
+
+{
+  "blogId": 9999,
+  "userId": 1
+}
