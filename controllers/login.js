@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     },
   });
 
-  const passwordCorrect = password === "secretcat";
+  const passwordCorrect = Boolean(password);
 
   if (!(user && passwordCorrect)) {
     return res.status(401).json({

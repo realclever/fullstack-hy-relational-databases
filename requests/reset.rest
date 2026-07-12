@@ -1,0 +1,5 @@
+### Check root endpoint
+GET http://localhost:3001/
+
+### Reset database
+POST http://localhost:3001/api/reset
