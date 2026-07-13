@@ -1,24 +1,56 @@
 const jwt = require("jsonwebtoken");
 const { SECRET } = require("./config");
+const { Session, User } = require("../models");
 
-const tokenExtractor = (req, res, next) => {
+const tokenExtractor = async (req, res, next) => {
   const authorization = req.get("authorization");
 
-  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    try {
-      req.decodedToken = jwt.verify(authorization.substring(7), SECRET);
-    } catch {
-      return res.status(401).json({
-        error: "token invalid",
-      });
-    }
-  } else {
+  if (!authorization || !authorization.toLowerCase().startsWith("bearer ")) {
     return res.status(401).json({
       error: "token missing",
     });
   }
 
-  next();
+  const token = authorization.substring(7);
+
+  try {
+    req.decodedToken = jwt.verify(token, SECRET);
+
+    const session = await Session.findOne({
+      where: {
+        token,
+      },
+    });
+
+    if (!session) {
+      return res.status(401).json({
+        error: "token invalid",
+      });
+    }
+
+    const user = await User.findByPk(req.decodedToken.id);
+
+    if (!user) {
+      return res.status(401).json({
+        error: "token invalid",
+      });
+    }
+
+    if (user.disabled) {
+      return res.status(401).json({
+        error: "account disabled, please contact admin",
+      });
+    }
+
+    req.session = session;
+    req.user = user;
+
+    next();
+  } catch {
+    return res.status(401).json({
+      error: "token invalid",
+    });
+  }
 };
 
 const errorHandler = (error, req, res, next) => {

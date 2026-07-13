@@ -16,3 +16,6 @@ Content-Type: application/json
   "password": "secretcat"
 }
 
+### Logout as cat
+DELETE http://localhost:3001/api/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhdEBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE3ODM5NzQzMzJ9.qQiQKID_zvQITTKqt4yYUAGOYRFGeXQYgK_IEH8sMpw
