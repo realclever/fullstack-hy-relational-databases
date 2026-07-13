@@ -42,3 +42,11 @@ Content-Type: application/json
   "name": "Professor Cat III"
 }
 
+### Get all readings
+GET http://localhost:3001/api/users/1
+
+### Get read readings
+GET http://localhost:3001/api/users/1?read=true
+
+### Get unread readings
+GET http://localhost:3001/api/users/1?read=false
