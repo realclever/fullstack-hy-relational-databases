@@ -27,3 +27,12 @@ Content-Type: application/json
   "blogId": 9999,
   "userId": 1
 }
+
+### Mark reading list entry as read
+PUT http://localhost:3001/api/readinglists/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhdEBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE3ODM5NTk2NzV9.JHJ73ImtGsDzMSBtZgKgMJf5QBYFFuVo04UbMsi3Slc
+
+{
+  "read": true
+}
