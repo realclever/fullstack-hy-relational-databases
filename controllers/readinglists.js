@@ -7,18 +7,38 @@ router.post("/", async (req, res, next) => {
   try {
     const { userId, blogId } = req.body;
 
+    if (!userId || !blogId) {
+      return res.status(400).json({
+        error: "userId and blogId are required",
+      });
+    }
+
     const user = await User.findByPk(userId);
-    const blog = await Blog.findByPk(blogId);
 
     if (!user) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: "user not found",
       });
     }
 
+    const blog = await Blog.findByPk(blogId);
+
     if (!blog) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: "blog not found",
+      });
+    }
+
+    const existingEntry = await ReadingList.findOne({
+      where: {
+        userId,
+        blogId,
+      },
+    });
+
+    if (existingEntry) {
+      return res.status(400).json({
+        error: "blog already in reading list",
       });
     }
 
@@ -27,7 +47,12 @@ router.post("/", async (req, res, next) => {
       blogId,
     });
 
-    res.json(readingList);
+    res.json({
+      id: readingList.id,
+      user_id: readingList.userId,
+      blog_id: readingList.blogId,
+      read: readingList.read,
+    });
   } catch (error) {
     next(error);
   }
@@ -44,8 +69,8 @@ router.put("/:id", tokenExtractor, async (req, res, next) => {
     }
 
     if (readingList.userId !== req.decodedToken.id) {
-      return res.status(403).json({
-        error: "forbidden",
+      return res.status(401).json({
+        error: "unauthorized",
       });
     }
 
